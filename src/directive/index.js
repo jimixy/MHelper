@@ -10,7 +10,6 @@ const importDirective = Vue => {
    * }
    */
   Vue.directive('draggable', directive.draggable)
-
 }
 
 export default importDirective
