@@ -1,16 +1,25 @@
-import Cookies from 'js-cookie'
-// cookie保存的天数
-import config from '@/config'
-const { cookieExpires } = config
 
-export const TOKEN_KEY = 'token'
-
-export const setToken = (token) => {
-  Cookies.set(TOKEN_KEY, token, { expires: cookieExpires || 1 })
+class Store {
+  constructor () {
+    this.local = window.localStorage
+  }
+  getLocal (key) {
+    try {
+      return JSON.parse(this.local.getItem(key))
+    } catch (error) {
+      console.log(error)
+    }
+  }
+  setLocal (key, val) {
+    this.local.setItem(key, typeof val === 'string' ? val : JSON.stringify(val))
+  }
+  delLocal (key) {
+    try {
+      this.local.removeItem(key)
+    } catch (error) {
+      console.log(error)
+    }
+  }
 }
 
-export const getToken = () => {
-  const token = Cookies.get(TOKEN_KEY)
-  if (token) return token
-  else return false
-}
+export default new Store()
