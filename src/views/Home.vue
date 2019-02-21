@@ -6,11 +6,10 @@
 </template>
 
 <script>
-
 import HelloWorld from '@/components/HelloWorld.vue'
+// require('~styles/index.styl')
 // import
 // import '~styles/index.styl'
-require('~styles/index.styl')
 
 export default {
   name: 'home',
@@ -25,4 +24,5 @@ export default {
 //     background #f00
     .home
         wh(20px, 30px)
+        background $menu-dark-title
 </style>

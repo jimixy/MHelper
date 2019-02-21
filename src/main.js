@@ -5,6 +5,7 @@ import store from './store'
 
 import config from '@/config'
 import importDirective from '@/directive'
+// import '~styles/index.styl'
 
 /**
  * 全局filter

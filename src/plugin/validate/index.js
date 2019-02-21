@@ -45,8 +45,6 @@ ValidatePlugin.install = function (Vue, options) {
       }
 
       function handleFun (el, vNode) {
-        debugger
-        console.log('this', this)
         const elName = el.name
         for (let i = 0; i < value.length; i++) {
           const result = handleStyles[arg](rules[value[i]], el, vNode)
@@ -77,7 +75,6 @@ ValidatePlugin.install = function (Vue, options) {
         const rulesName = form.attributes['rules'].value
 
         function handleFun (el, vNode) {
-          debugger
           const elName = el.name
           const formRules = this[rulesName]
 
@@ -113,9 +110,6 @@ ValidatePlugin.install = function (Vue, options) {
           binding.value()
         } else {
           const firstErrEl = errorInputs[0].getElementsByTagName('input')[0]
-          // const errorKey = errorInputs[0].getElementsByTagName('input')[0].name
-          // ValidatePlugin.validation._vm.$toast(ValidatePlugin.validation.errorObj[firstErrEl.name].msg)
-
           // 第一个元素滚动到可视区
           document.getElementsByClassName('content-container')[0].scrollTop = firstErrEl.offsetTop - document.documentElement.clientHeight + 100
           firstErrEl.focus()
@@ -129,19 +123,9 @@ ValidatePlugin.install = function (Vue, options) {
   })
   Vue.directive('rules', {
     inserted (el, binding, vNode) {
-      console.log('rules---222', el, binding, vNode)
       const rules = binding.value
       let validator = new Validator()
-      // Object.entries(rules).forEach(([key, value]) => {
-      //     console.log('key,value', key, value)
-      //     if(Array.isArray(value)){
-      //         value.forEach((item)=>{
-      //             console.log('item', item);
-      //         })
-      //     }
-      // });
       el.addEventListener('change', event => {
-        debugger
         event = event || window.event
         var target = event.target || event.srcElement
         if (!target.name) {
@@ -155,19 +139,7 @@ ValidatePlugin.install = function (Vue, options) {
           }
           let errorMsg = validator.start()
           return errorMsg
-
-          // if (Array.isArray(rules[target.name])) {
-          //     rules[target.name].forEach((item) => {
-          //         console.log('item', item);
-          //     })
-          // }else{
-          //     console.error('校验规则有误!!!');
-          // }
         }
-
-        // target.value;
-        console.log('this222', this)
-        console.log('event', event, target)
       })
     }
   })

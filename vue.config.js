@@ -1,8 +1,7 @@
-const path = require('path')
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
-const resolve = dir => {
-  return path.join(__dirname, dir)
-}
+// 拼接路径
+const resolve = dir => require('path').join(__dirname, dir)
 
 // 项目部署基础
 // 默认情况下，我们假设你的应用将被部署在域的根目录下,
@@ -27,10 +26,50 @@ module.exports = {
       }
     }
   }),
+  css: {
+    loaderOptions: {
+      // 设置 scss 公用变量文件
+      stylus: {
+        data: `@import '~@/assets/styles/setting.styl';`
+      }
+    }
+  },
   chainWebpack: config => {
     config.resolve.alias
       .set('@', resolve('src'))
-      .set('_c', resolve('src/components'))
+
+    config
+    // 开发环境
+      .when(process.env.NODE_ENV === 'development',
+        // sourcemap不包含列信息
+        config => config.devtool('cheap-source-map')
+      )
+    // 非开发环境
+      .when(process.env.NODE_ENV !== 'development', config => {
+        config.optimization
+          .minimizer([
+            new UglifyJsPlugin({
+              uglifyOptions: {
+                // 移除 console
+                // 其它优化选项 https://segmentfault.com/a/1190000010874406
+                compress: {
+                  warnings: false,
+                  drop_console: true,
+                  drop_debugger: true,
+                  pure_funcs: ['console.log']
+                }
+              }
+            })
+          ])
+      })
+
+    // 判断环境加入模拟数据
+    const entry = config.entry('app')
+    if (process.env.VUE_APP_BUILD_MODE !== 'nomock') {
+      entry
+        .add('@/mock')
+        .end()
+    }
   },
   // 设为false打包时不生成.map文件
   productionSourceMap: false
