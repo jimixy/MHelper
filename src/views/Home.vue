@@ -1,7 +1,6 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/images/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <HelloWorld msg="主页吗"/>
   </div>
 </template>
 
@@ -17,6 +16,7 @@ export default {
     HelloWorld
   },
   mounted() {
+    // 测试 API 的调用
     this.$rest.hehe.test({ name: 'tomy' })
   }
 }

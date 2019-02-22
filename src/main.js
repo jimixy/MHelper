@@ -4,6 +4,7 @@ import router from './routers'
 import store from './store'
 
 import validator from '@ignorance/vue-validator'
+import VueRx from 'vue-rx'
 import myPlugin from './plugin/index'
 
 /**
@@ -12,10 +13,10 @@ import myPlugin from './plugin/index'
 Vue.config.productionTip = false
 
 /**
- * 注册指令
+ * 安装插件
  */
-
 Vue.use(validator)
+Vue.use(VueRx)
 Vue.use(myPlugin)
 
 new Vue({

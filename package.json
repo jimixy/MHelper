@@ -11,8 +11,10 @@
     "@ignorance/vue-validator": "^0.0.50",
     "axios": "^0.18.0",
     "qs": "^6.6.0",
+    "rxjs": "^6.4.0",
     "vue": "^2.5.22",
     "vue-router": "^3.0.1",
+    "vue-rx": "^6.1.0",
     "vuex": "^3.0.1"
   },
   "devDependencies": {
