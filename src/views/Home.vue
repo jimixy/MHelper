@@ -15,6 +15,9 @@ export default {
   name: 'home',
   components: {
     HelloWorld
+  },
+  mounted() {
+    this.$rest.hehe.test({ name: 'tomy' })
   }
 }
 </script>

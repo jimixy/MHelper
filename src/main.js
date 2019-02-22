@@ -4,6 +4,7 @@ import router from './routers'
 import store from './store'
 
 import validator from '@ignorance/vue-validator'
+import myPlugin from './plugin/index'
 
 /**
  * @description 生产环境关掉提示
@@ -15,6 +16,7 @@ Vue.config.productionTip = false
  */
 
 Vue.use(validator)
+Vue.use(myPlugin)
 
 new Vue({
   router,
