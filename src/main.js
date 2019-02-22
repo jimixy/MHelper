@@ -3,17 +3,7 @@ import App from './App.vue'
 import router from './routers'
 import store from './store'
 
-import config from '@/config'
-import importDirective from '@/directive'
-// import '~styles/index.styl'
-
-/**
- * 全局filter
- */
-import * as filters from '@/filters'
-Object.keys(filters).forEach(key => {
-  Vue.filter(key, filters[key])
-})
+import validator from '@ignorance/vue-validator'
 
 /**
  * @description 生产环境关掉提示
@@ -21,13 +11,10 @@ Object.keys(filters).forEach(key => {
 Vue.config.productionTip = false
 
 /**
- * @description 全局注册应用配置
- */
-Vue.prototype.$config = config
-/**
  * 注册指令
  */
-importDirective(Vue)
+
+Vue.use(validator)
 
 new Vue({
   router,

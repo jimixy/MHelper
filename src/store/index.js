@@ -1,9 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
-import module from './module'
-console.log('module', module)
-
 Vue.use(Vuex)
 
 export default new Vuex.Store({
@@ -15,6 +12,5 @@ export default new Vuex.Store({
   },
   actions: {
     //
-  },
-  modules: module.modules
+  }
 })

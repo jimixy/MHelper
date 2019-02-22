@@ -626,7 +626,7 @@
     core-js "^2.5.7"
     regenerator-runtime "^0.12.0"
 
-"@babel/runtime@^7.0.0":
+"@babel/runtime@^7.0.0", "@babel/runtime@^7.1.2":
   version "7.3.1"
   resolved "http://registry.npm.taobao.org/@babel/runtime/download/@babel/runtime-7.3.1.tgz#574b03e8e8a9898eaf4a872a92ea20b7846f6f2a"
   integrity sha1-V0sD6OipiY6vSocqkuogt4Rvbyo=
@@ -666,6 +666,36 @@
     lodash "^4.17.10"
     to-fast-properties "^2.0.0"
 
+"@ignorance/validator@0.0.16":
+  version "0.0.16"
+  resolved "https://registry.npmjs.org/@ignorance/validator/-/validator-0.0.16.tgz#2cbf3651281fd37fc42ebb743198873cde37331d"
+  integrity sha512-PbusOTZj/A2QZO4AuPpeb34oHKr/4imIwfbaqhEpDeMe9k2RB/0ToE5iG7OLj/6tEGhZ2cCTqKAsgs9bBSgMHw==
+  dependencies:
+    "@babel/runtime" "^7.1.2"
+    "@jsmini/extend" "0.2.1"
+    "@jsmini/type" "0.4.0"
+
+"@ignorance/vue-validator@^0.0.50":
+  version "0.0.50"
+  resolved "https://registry.npmjs.org/@ignorance/vue-validator/-/vue-validator-0.0.50.tgz#cb9af267cb7ee60f950df370289547c70871e2d0"
+  integrity sha512-mmoDOpoUmSSHyFNYX3Pk9GP1+CuKTEY7ehR8o3zzrxoeThH8HeDeaTZ7JStqwOQnP37i2giYbMt9w7rInki5Nw==
+  dependencies:
+    "@babel/runtime" "^7.1.2"
+    "@ignorance/validator" "0.0.16"
+    "@jsmini/clone" "0.3.0"
+    "@jsmini/console" "0.6.0"
+    "@jsmini/event" "0.5.1"
+    "@jsmini/extend" "0.2.0"
+    "@jsmini/guid" "0.6.0"
+    "@jsmini/inherits" "0.5.0"
+    "@jsmini/is" "0.4.0"
+    "@jsmini/load" "0.1.0"
+    "@jsmini/pubsub" "0.1.0"
+    "@jsmini/querystring" "0.1.0"
+    "@jsmini/type" "0.4.0"
+    "@jsmini/url" "0.1.0"
+    "@vue/babel-preset-app" "^3.2.0"
+
 "@intervolga/optimize-cssnano-plugin@^1.0.5":
   version "1.0.6"
   resolved "http://registry.npm.taobao.org/@intervolga/optimize-cssnano-plugin/download/@intervolga/optimize-cssnano-plugin-1.0.6.tgz#be7c7846128b88f6a9b1d1261a0ad06eb5c0fdf8"
@@ -674,6 +704,119 @@
     cssnano "^4.0.0"
     cssnano-preset-default "^4.0.0"
     postcss "^7.0.0"
+
+"@jsmini/clone@0.3.0":
+  version "0.3.0"
+  resolved "https://registry.npmjs.org/@jsmini/clone/-/clone-0.3.0.tgz#43b9bdcc4504fa5328f0f1c1024051def7aa1842"
+  integrity sha512-XrrJQDcD4PXFVeetA89bdtHzM+ytMsAQT//dAvKUjT682yDypyaP7PXq5axAXyI6PojxCs9gjPoLIjLxclsfLA==
+  dependencies:
+    "@jsmini/type" "0.4.1"
+    babel-runtime "6.26.0"
+
+"@jsmini/console@0.6.0":
+  version "0.6.0"
+  resolved "https://registry.npmjs.org/@jsmini/console/-/console-0.6.0.tgz#9e6443e91630d19ef84324290d7a968f4ce01b57"
+  integrity sha512-HoxFH3WALBGSFtPa9vhcJ5GqPaQnIgPNPjPSLHtEedGSBhfbLDRyPKdHGeXDWyY/e520SL5LiFVgpFTpLtH6DQ==
+
+"@jsmini/event@0.5.1":
+  version "0.5.1"
+  resolved "https://registry.npmjs.org/@jsmini/event/-/event-0.5.1.tgz#8f51456bd92002dab625ae4f716887c230b077a9"
+  integrity sha512-KeJP9TKcm4hqc/Z1jCSKPcoNF629IvT9doWc/yQYEpfrzG6RBSCnrh7HJn5cI3LslCYgI//7TdT5kRVbVjzt0A==
+  dependencies:
+    "@jsmini/is" "0.4.0"
+
+"@jsmini/extend@0.2.0":
+  version "0.2.0"
+  resolved "https://registry.npmjs.org/@jsmini/extend/-/extend-0.2.0.tgz#1c18d8bac3b34ea2b67adec9d9789f2b12afc60a"
+  integrity sha512-S+BTjwgIvEPwCdd+wBPXpZFCmyKuSCWAtDnpfbfM7S51CtaVSCzTa03jUJkfuBCDGbnXh9y3qnKnMrxlzu0+Tw==
+  dependencies:
+    "@jsmini/is" "0.7.1"
+    babel-runtime "6.26.0"
+
+"@jsmini/extend@0.2.1":
+  version "0.2.1"
+  resolved "https://registry.npmjs.org/@jsmini/extend/-/extend-0.2.1.tgz#8cb07d57ec3fe0f9b04b65629df0098c34f4a2c0"
+  integrity sha512-tuslSBsHaV0ZV3UiYKblfkwsua1hGFxh3bSxBNQk2a6t6Q1dkv+l/0XBsHstsfY5xVCjR/gDjd8gJ3Z07NzWJw==
+  dependencies:
+    "@jsmini/is" "0.7.1"
+    babel-runtime "6.26.0"
+
+"@jsmini/guid@0.6.0":
+  version "0.6.0"
+  resolved "https://registry.npmjs.org/@jsmini/guid/-/guid-0.6.0.tgz#82c46b9395949afe542d4e1013d612a1cb88524f"
+  integrity sha512-cKaqeyfZZAQ0BQmQmW1q40NOhtc26DhSd7MMLPykHFcIPSgZXem4Rfx8ja/yeheDThYVZfPgMuxqdMcDj+OcHg==
+
+"@jsmini/guid@0.7.0":
+  version "0.7.0"
+  resolved "https://registry.npmjs.org/@jsmini/guid/-/guid-0.7.0.tgz#d9dc9d3fb626ad520ea0b4d4bdc72ae8e77bf46b"
+  integrity sha512-2iJLq/ABVcFeotRacy6QyocWEwdfq8LhwE1GJmCsO3s0NLXzk5HQQ3jOWUAYdoss3xvCa/oS0BLoeBAEjMlwAg==
+
+"@jsmini/inherits@0.5.0":
+  version "0.5.0"
+  resolved "https://registry.npmjs.org/@jsmini/inherits/-/inherits-0.5.0.tgz#29cb89605a0b471887498e2c7379166ecfe79044"
+  integrity sha512-DTosvHfLTFOi5I2QtL81yrUz6hBR+i6HnoNWNDgz3yl5LAE9WHtO2rVNzdaPS/wokiuGsE2Bsm2NGRnkWrdvpQ==
+  dependencies:
+    "@jsmini/is" "0.4.0"
+
+"@jsmini/is@0.4.0":
+  version "0.4.0"
+  resolved "https://registry.npmjs.org/@jsmini/is/-/is-0.4.0.tgz#d345203ace0e0ff0ff64afd30aa825de9146bc08"
+  integrity sha512-RZEXdECJ7nOt/QlBxWC5Rdn5zODBlv6SdGLgy58OK4G/IHrB3O5ZSiqbf2MPdN94OnORYAC8xG190Siqw+9QpA==
+  dependencies:
+    "@jsmini/type" "0.4.0"
+
+"@jsmini/is@0.7.1":
+  version "0.7.1"
+  resolved "https://registry.npmjs.org/@jsmini/is/-/is-0.7.1.tgz#e8b4dac6065cdc4161d77e8f0af5fd522735846e"
+  integrity sha512-qGuzavc41g2Hrb92eOneFguFuxK21fSrzLw5cW27laUD7a/E+nLst2bPcfbaNQPGMbRR7VGRbBvIbqRwIUZtjw==
+  dependencies:
+    "@jsmini/type" "0.4.1"
+
+"@jsmini/load@0.1.0":
+  version "0.1.0"
+  resolved "https://registry.npmjs.org/@jsmini/load/-/load-0.1.0.tgz#a58ee0fa8f6863b87fe065abc60ac0a7cbfc50bd"
+  integrity sha512-/AnSEHNxCai8gbO/TShwzo5pqzz5g576/b0xYL2UyiYfVBksTmdfktI0ss2/JD6i7i2y9XLTSORlaNQkmR9urA==
+  dependencies:
+    "@jsmini/extend" "0.2.0"
+    "@jsmini/guid" "0.7.0"
+    babel-runtime "6.26.0"
+
+"@jsmini/pubsub@0.1.0":
+  version "0.1.0"
+  resolved "https://registry.npmjs.org/@jsmini/pubsub/-/pubsub-0.1.0.tgz#8b41bc185d1eb96713132527e114c0da0c5d673a"
+  integrity sha512-ebt9x/B3Dep/iHOjXRANQzrL24PUzZhHI35LhBgL+2FEGZFICjoEV1lw3zFteowo+0V8btDnr6nd85BwyUxrNg==
+  dependencies:
+    "@jsmini/event" "0.5.1"
+    "@jsmini/is" "0.7.1"
+    babel-runtime "6.26.0"
+
+"@jsmini/querystring@0.1.0":
+  version "0.1.0"
+  resolved "https://registry.npmjs.org/@jsmini/querystring/-/querystring-0.1.0.tgz#1f0311d9374bac9ebafcbbbb73d2f44d6eb552bc"
+  integrity sha512-0Zh/Sb545Pk8HtqK7r3lBMGhT+OZCz6f/L19C9FwRFBrjMqWheNpdV1D4yo+yNrDujzgLcN3MDBLmL6XLcdrPw==
+  dependencies:
+    "@jsmini/extend" "0.2.0"
+    "@jsmini/type" "0.4.1"
+    babel-runtime "6.26.0"
+
+"@jsmini/type@0.4.0":
+  version "0.4.0"
+  resolved "https://registry.npmjs.org/@jsmini/type/-/type-0.4.0.tgz#777e3d7b7aa25607b29d2e6d114af21c3a41f225"
+  integrity sha512-aRfW1dVDQPeBordr3ShLrpD1K5Ecfcyb20r9X8wpH0qpZ0vFBUSakYcJS3N67eoebYHVc7GIzN0sQIq2sKyPMg==
+
+"@jsmini/type@0.4.1":
+  version "0.4.1"
+  resolved "https://registry.npmjs.org/@jsmini/type/-/type-0.4.1.tgz#b2677e0017291f55c0c4a0098d4ca2e585352373"
+  integrity sha512-gkd/6HyMzYzl8a53FihQXxUb1MDyOMaZTGbajy+1tl7lZapuPEJ1L/Jm96iesyRQCRTc5eyEvR1++srmwsYIjw==
+
+"@jsmini/url@0.1.0":
+  version "0.1.0"
+  resolved "https://registry.npmjs.org/@jsmini/url/-/url-0.1.0.tgz#efe29c59347aed2e0c2eb582b3ddd823baeedc74"
+  integrity sha512-2nC5mvzLTNIStfT1rY0iPqshpX0+e5I5cLZfEEVt/g9QDKpOPzix8WvMa6clrbdOGgn3JAQy0bGdhDIvYUbOQg==
+  dependencies:
+    "@jsmini/is" "0.7.1"
+    "@jsmini/querystring" "0.1.0"
+    babel-runtime "6.26.0"
 
 "@mrmlnc/readdir-enhanced@^2.2.1":
   version "2.2.1"
@@ -718,6 +861,23 @@
     html-tags "^2.0.0"
     lodash.kebabcase "^4.1.1"
     svg-tags "^1.0.0"
+
+"@vue/babel-preset-app@^3.2.0":
+  version "3.4.1"
+  resolved "https://registry.npmjs.org/@vue/babel-preset-app/-/babel-preset-app-3.4.1.tgz#98a0bf3f207b989e00a9ec27dd0d2d1b4f27402b"
+  integrity sha512-io04dFwNgAtjT/5c9l69rDjH0HYOamlgafDRaRz69NEvo59dkOELYlB6G1so7S7Nj25El+0iZTTJ9zPN0qLgeA==
+  dependencies:
+    "@babel/plugin-proposal-class-properties" "^7.0.0"
+    "@babel/plugin-proposal-decorators" "^7.1.0"
+    "@babel/plugin-syntax-dynamic-import" "^7.0.0"
+    "@babel/plugin-syntax-jsx" "^7.0.0"
+    "@babel/plugin-transform-runtime" "^7.0.0"
+    "@babel/preset-env" "^7.0.0"
+    "@babel/runtime" "^7.0.0"
+    "@babel/runtime-corejs2" "^7.2.0"
+    "@vue/babel-preset-jsx" "^1.0.0-beta.2"
+    babel-plugin-dynamic-import-node "^2.2.0"
+    core-js "^2.6.5"
 
 "@vue/babel-preset-app@^3.4.0":
   version "3.4.0"
@@ -1440,6 +1600,14 @@ babel-plugin-dynamic-import-node@^2.2.0:
   integrity sha1-wK37B9lfSkSV6aqsbsOGxNfCUk4=
   dependencies:
     object.assign "^4.1.0"
+
+babel-runtime@6.26.0:
+  version "6.26.0"
+  resolved "https://registry.npmjs.org/babel-runtime/-/babel-runtime-6.26.0.tgz#965c7058668e82b55d7bfe04ff2337bc8b5647fe"
+  integrity sha1-llxwWGaOgrVde/4E/yM3vItWR/4=
+  dependencies:
+    core-js "^2.4.0"
+    regenerator-runtime "^0.11.0"
 
 balanced-match@^1.0.0:
   version "1.0.0"
@@ -2197,6 +2365,11 @@ copy-webpack-plugin@^4.6.0:
     minimatch "^3.0.4"
     p-limit "^1.0.0"
     serialize-javascript "^1.4.0"
+
+core-js@^2.4.0, core-js@^2.6.5:
+  version "2.6.5"
+  resolved "https://registry.npmjs.org/core-js/-/core-js-2.6.5.tgz#44bc8d249e7fb2ff5d00e0341a7ffb94fbf67895"
+  integrity sha512-klh/kDpwX8hryYL14M9w/xei6vrv6sE8gTHDG7/T/+SEovB/G4ejwcfE/CBzO6Edsu+OETZMZ3wcX/EjUkrl5A==
 
 core-js@^2.5.7, core-js@^2.6.3:
   version "2.6.4"
@@ -6397,6 +6570,11 @@ regenerate@^1.2.1, regenerate@^1.4.0:
   version "1.4.0"
   resolved "http://registry.npm.taobao.org/regenerate/download/regenerate-1.4.0.tgz#4a856ec4b56e4077c557589cae85e7a4c8869a11"
   integrity sha1-SoVuxLVuQHfFV1icroXnpMiGmhE=
+
+regenerator-runtime@^0.11.0:
+  version "0.11.1"
+  resolved "https://registry.npmjs.org/regenerator-runtime/-/regenerator-runtime-0.11.1.tgz#be05ad7f9bf7d22e056f9726cee5017fbf19e2e9"
+  integrity sha512-MguG95oij0fC3QV3URf4V2SDYGJhJnJGqvIIgdECeODCT98wSWDAJ94SSuVpYQUoTcGUIL6L4yNB7j1DFFHSBg==
 
 regenerator-runtime@^0.12.0:
   version "0.12.1"
