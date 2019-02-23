@@ -8,8 +8,6 @@
   </div>
 </template>
 
-<style lang="stylus">
-// @import '~@/styles/index.styl';
-    // require('~styles/index.styl')
-    // @import '~@/styles/index.styl'
+<style lang="stylus" scoped>
+    @import '~@/assets/styles/common.styl';
 </style>
