@@ -1,14 +1,11 @@
 <template>
-  <div class="home">
+  <div class="home ml10 text-c">
     <HelloWorld msg="主页吗"/>
   </div>
 </template>
 
 <script>
 import HelloWorld from '@/components/HelloWorld.vue'
-// require('~styles/index.styl')
-// import
-// import '~styles/index.styl'
 
 export default {
   name: 'home',
@@ -22,9 +19,8 @@ export default {
 }
 </script>
 
-<style lang="stylus" scoped>
-// .home
-//     background #f00
+<style lang="stylus">
+@import '~@/assets/styles/index.styl';
     .home
         wh(20px, 30px)
         background $menu-dark-title
