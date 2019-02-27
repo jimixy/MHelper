@@ -8,6 +8,15 @@
   </div>
 </template>
 
-<style lang="stylus" scoped>
-    @import '~@/assets/styles/common.styl';
+<style lang="stylus">
+    @import '~@/assets/styles/index.styl';
+    html,body{
+      wh(100%, 100%);
+      overflow: hidden;
+      margin: 0;
+      padding: 0;
+    }
+    #app {
+      wh(100%, 100%);
+    }
 </style>
