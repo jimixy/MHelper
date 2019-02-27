@@ -7,6 +7,9 @@ import validator from '@ignorance/vue-validator'
 import VueRx from 'vue-rx'
 import myPlugin from './plugin/index'
 
+// icon
+import './assets/icons'
+
 /**
  * @description 生产环境关掉提示
  */
