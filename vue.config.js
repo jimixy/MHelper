@@ -1,5 +1,6 @@
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
-
+const autoprefixer = require('autoprefixer')
+const pxtorem = require('postcss-pxtorem')
 const path = require('path')
 
 const resolve = dir => {
@@ -25,12 +26,33 @@ module.exports = {
   publicPath: publicPath,
   // 如果你不需要使用eslint，把 lintOnSave 设为false即可
   lintOnSave: true,
+  css: {
+    loaderOptions: {
+      postcss: {
+        plugins: [
+          autoprefixer(),
+          pxtorem({
+            rootValue: 37.5,
+            propList: ['*']
+          })
+        ]
+      }
+    }
+  },
   chainWebpack: config => {
+    /**
+     * 删除懒加载模块的 prefetch preload，降低带宽压力
+     * 而且预渲染时生成的 prefetch 标签是 modern 版本的，低版本浏览器是不需要的
+     */
+    config.plugins
+      .delete('prefetch')
+      .delete('preload')
+
     config
     // 开发环境
       .when(process.env.NODE_ENV === 'development',
         // sourcemap不包含列信息
-        config => config.devtool('cheap-source-map')
+        config => config.devtool('eval-source-map')
       )
     // 非开发环境
       .when(process.env.NODE_ENV !== 'development', config => {

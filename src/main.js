@@ -7,8 +7,19 @@ import validator from '@ignorance/vue-validator'
 import VueRx from 'vue-rx'
 import myPlugin from './plugin/index'
 
+import 'amfe-flexible'
+
 // icon
 import './assets/icons'
+
+/**
+ * @description 全局组件，不用单独引入
+ */
+import {
+  Cell, CellGroup, Button
+} from 'vant'
+
+Vue.use(Cell).use(CellGroup).use(Button)
 
 /**
  * @description 生产环境关掉提示
