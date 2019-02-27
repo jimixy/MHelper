@@ -1,14 +1,30 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from '@/views/Home'
 
 Vue.use(Router)
 
 let routes = [
   {
-    path: '/',
-    name: 'home',
-    component: Home
+    path: '/login',
+    name: 'login',
+    meta: {
+      title: '登录'
+    },
+    component: () => import('@/views/login')
+  }, {
+    path: '/register',
+    name: 'register',
+    meta: {
+      title: '注册'
+    },
+    component: () => import('@/views/register')
+  }, {
+    path: '/forget',
+    name: 'forget',
+    meta: {
+      title: '忘记密码'
+    },
+    component: () => import('@/views/forget')
   }
 ]
 
@@ -24,7 +40,24 @@ routerContext.keys().forEach(route => {
   routes = [...routes, ...(routerModule.default || routerModule)]
 })
 
-export default new Router({
-  mode: 'history',
-  routes: routes
+const router = new Router({
+  routes,
+  mode: 'history'
 })
+
+router.beforeEach((to, from, next) => {
+  if (to.name === 'login') {
+    next()
+  } else {
+    next({
+      name: 'login'
+    })
+    // next()
+  }
+})
+
+router.afterEach(to => {
+  window.scrollTo(0, 0)
+})
+
+export default router
