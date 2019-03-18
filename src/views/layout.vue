@@ -1,7 +1,7 @@
 <template>
   <div class="home text-c">
     <router-view></router-view>
-    <van-tabbar v-model="active" v-if="$route.meta.hasTab" @change="getChange">
+    <van-tabbar v-model="$route.meta.tabIndex" v-if="$route.meta.tabIndex!=null" @change="getChange">
       <van-tabbar-item :to="{name: 'home'}">
         <span>首页</span>
         <van-icon slot="icon" slot-scope="props" name="home-o" :color="props.active? iconColor: ''"/>
@@ -25,12 +25,8 @@ export default {
   name: 'home',
   data() {
     return {
-      active: 0,
-      iconColor: '#1989fa',
-      icon: {
-        normal: '//img.yzcdn.cn/icon-normal.png',
-        active: '//img.yzcdn.cn/icon-active.png'
-      }
+      active: this.$route.meta.tabIndex,
+      iconColor: '#1989fa'
     }
   },
   components: {
@@ -43,17 +39,9 @@ export default {
     }
   },
   mounted() {
-    console.log('route', this.$route)
-
     // 测试 API 的调用
+    // console.log('router', this.$router)
     // this.$rest.hehe.test({ name: 'tomy' })
   }
 }
 </script>
-
-<style lang="stylus" scoped>
-.test11 {
-  width: 375px;
-  height: 50px;
-}
-</style>

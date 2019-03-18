@@ -8,7 +8,7 @@ export default [{
     name: 'home',
     meta: {
       title: 'MHelper',
-      hasTab: true
+      tabIndex: 0
     },
     component: () => import('@/views/home')
   },
@@ -17,7 +17,7 @@ export default [{
     name: 'information',
     meta: {
       title: '资讯',
-      hasTab: true
+      tabIndex: 1
     },
     component: () => import('@/views/information')
   },
@@ -26,7 +26,7 @@ export default [{
     name: 'person',
     meta: {
       title: '个人中心',
-      hasTab: true
+      tabIndex: 2
     },
     component: () => import('@/views/person')
   }
