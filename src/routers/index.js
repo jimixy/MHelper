@@ -5,6 +5,14 @@ Vue.use(Router)
 
 let routes = [
   {
+    path: '*',
+    redirect: '/login'
+  },
+  {
+    path: '/',
+    redirect: '/home'
+  },
+  {
     path: '/login',
     name: 'login',
     meta: {
@@ -49,10 +57,10 @@ router.beforeEach((to, from, next) => {
   if (to.name === 'login') {
     next()
   } else {
-    next({
-      name: 'login'
-    })
-    // next()
+    // next({
+    //   name: 'login'
+    // })
+    next()
   }
 })
 

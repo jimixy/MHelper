@@ -9,7 +9,8 @@ import '@/assets/styles/index.styl'
 import {
   Cell,
   CellGroup,
-  Button
+  Button,
+  Icon
 } from 'vant'
 
 import App from './App.vue'
@@ -34,7 +35,7 @@ Vue.config.productionTip = false
 /**
  * 安装插件
  */
-Vue.use(Cell).use(CellGroup).use(Button)
+Vue.use(Cell).use(CellGroup).use(Button).use(Icon)
 Vue.use(validator)
 Vue.use(VueRx)
 Vue.use(myPlugin)
