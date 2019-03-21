@@ -10,7 +10,11 @@ import {
   Cell,
   CellGroup,
   Button,
-  Icon
+  Icon,
+  Dialog,
+  Toast,
+  NavBar,
+  Tag
 } from 'vant'
 
 import App from './App.vue'
@@ -35,7 +39,7 @@ Vue.config.productionTip = false
 /**
  * 安装插件
  */
-Vue.use(Cell).use(CellGroup).use(Button).use(Icon)
+Vue.use(Cell).use(CellGroup).use(Button).use(Icon).use(Dialog).use(Toast).use(NavBar).use(Tag)
 Vue.use(validator)
 Vue.use(VueRx)
 Vue.use(myPlugin)

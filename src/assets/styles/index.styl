@@ -1,2 +1,39 @@
 @import './common.styl';
 @import './vant-ui.styl';
+
+
+html {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    font-size: 14px;
+    color: #666;
+}
+
+*, *:before, *:after {
+    -webkit-box-sizing: inherit;
+    -moz-box-sizing: inherit;
+    box-sizing: inherit;
+}
+
+img {
+  width: auto;
+  height: auto;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  vertical-align: middle;
+}
+
+.container {
+  padding-top: 46Px; // ignored
+  width: 100%;
+  .wrapper {
+    width: 100%;
+    padding: 10px;
+  }
+}

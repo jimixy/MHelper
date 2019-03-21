@@ -13,6 +13,12 @@ module.exports = {
     'prefer-promise-reject-errors': 'off',
     "space-before-function-paren": 'off'
   },
+  globals: {
+    'wx': true,
+    'getApp': true,
+    'App': true,
+    'getCurrentPages': true
+  },
   parserOptions: {
     parser: 'babel-eslint'
   }

@@ -1,9 +1,10 @@
 <template>
-  <div class='info-container'>
-      资讯页面
-      <div class="test11">
-
-      </div>
+  <div class='container'>
+      <van-nav-bar
+      class="j-nav-bar"
+      fixed
+      :title="$route.meta.title"
+    ></van-nav-bar>
   </div>
 </template>
 
@@ -23,9 +24,5 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-.test11 {
-  width: 375px;
-  height: 50px;
-  background $menu-dark-title
-}
+
 </style>

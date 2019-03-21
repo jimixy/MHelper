@@ -4,6 +4,12 @@
   </div>
 </template>
 
+<script>
+export default {
+
+}
+</script>
+
 <style lang="stylus">
     html,body{
       wh(100%, 100%);

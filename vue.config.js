@@ -33,7 +33,8 @@ module.exports = {
           autoprefixer(),
           pxtorem({
             rootValue: 37.5,
-            propList: ['*']
+            propList: ['*', '!font*'],
+            selectorBlackList: ['van-']
           })
         ]
       }

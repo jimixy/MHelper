@@ -25,10 +25,19 @@ export default [{
     path: '/person',
     name: 'person',
     meta: {
-      title: '个人中心',
+      title: '我的',
       tabIndex: 2
     },
     component: () => import('@/views/person')
+  },
+  {
+    path: '/attentionminip',
+    name: 'attentionminip',
+    meta: {
+      title: '关注小程序'
+    },
+    component: () => import('@/views/attentionMiniP')
   }
+
   ]
 }]
