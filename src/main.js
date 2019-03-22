@@ -3,20 +3,6 @@ import Vue from 'vue'
 import 'normalize.css/normalize.css'
 import '@/assets/styles/index.styl'
 
-/**
- * @description 全局组件，不用单独引入
- */
-import {
-  Cell,
-  CellGroup,
-  Button,
-  Icon,
-  Dialog,
-  Toast,
-  NavBar,
-  Tag
-} from 'vant'
-
 import App from './App.vue'
 import router from './routers'
 import store from './store'
@@ -31,10 +17,26 @@ import 'amfe-flexible'
 // icon
 import './assets/icons'
 
+/**
+ * @description 全局组件，不用单独引入
+ */
+import {
+  Cell,
+  CellGroup,
+  Button,
+  Field,
+  Icon,
+  Dialog,
+  Toast,
+  NavBar,
+  Tag
+} from 'vant'
+
 const components = [
   Cell,
   CellGroup,
   Button,
+  Field,
   Icon,
   Dialog,
   Toast,

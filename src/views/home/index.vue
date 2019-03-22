@@ -46,6 +46,8 @@
       </van-tabs>
     </div>
 
+    <screen-shots :show="screenShow"></screen-shots>
+
     <!-- 底部上拉菜单 -->
     <van-actionsheet v-model="sheetVisible" cancel-text="取消" :actions="actions" @select="onSelect"/>
   </div>
@@ -53,13 +55,16 @@
 
 <script>
 import { Actionsheet, Tab, Tabs } from 'vant'
+// import QRCode from 'qrcode'
+import screenShots from '@/components/ScreenShots'
 
 export default {
   name: 'home',
   components: {
     [Actionsheet.name]: Actionsheet,
     [Tab.name]: Tab,
-    [Tabs.name]: Tabs
+    [Tabs.name]: Tabs,
+    screenShots
   },
   data() {
     return {
@@ -279,7 +284,9 @@ export default {
           lastprice: 90.11,
           updatetime: '2019-03-22 15:40:12'
         }
-      ]
+      ],
+
+      screenShow: false
     }
   },
   methods: {
