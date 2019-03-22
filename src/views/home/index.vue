@@ -27,14 +27,17 @@
                 </div>
                 <div slot="title" class="j-cell-title">
                   <div class="j-cell-title1">测试标题1</div>
-                  <div class="j-cell-title2">{{item.volume | filterMoney}}</div>
+                  <div class="j-cell-title2">量 {{item.volume | filterMoney}}</div>
                 </div>
-                <div class="j-cell-value">
+                <div class="j-cell-value j-span" :class="[item.change>0?'t-success': 't-danger']">
                   <div class="j-cell-value1">{{item.lastprice}}</div>
                   <div class="j-cell-value2">{{item.lastprice}}</div>
                 </div>
                 <div slot="right-icon" class="j-cell-right-icon">
-                  <van-tag type="success" :class="{'danger': item.change <= 0}" class="j-tag">{{item.change}}%</van-tag>
+                  <van-tag
+                    :class="[item.change>0?'b-success': 'b-danger']"
+                    class="j-tag"
+                  >{{item.change}}%</van-tag>
                 </div>
               </van-cell>
             </van-cell-group>
@@ -355,9 +358,10 @@ export default {
   .coins {
     width: 100%;
     min-height: 500px;
-    .j-tag{
-        min-width: 70px;
-        text-align: center;
+
+    .j-tag {
+      min-width: 70px;
+      text-align: center;
     }
   }
 }
