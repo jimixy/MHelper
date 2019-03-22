@@ -1,10 +1,13 @@
 import axios from 'axios'
 import qs from 'qs'
 import getCookie from './cookie'
+import config from '../config'
 
 class Ajax {
   constructor(options) {
-    this.axios = axios.create({ baseURL: process.env.baseUrl })
+    this.axios = axios.create({
+      baseURL: config.baseUrl
+    })
     this.commonPath = (options || {}).commonPath
       ? options.commonPath
       : '/api/v1'

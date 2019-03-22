@@ -23,20 +23,18 @@
             <van-cell-group class="j-cell-group">
               <van-cell class="j-cell" v-for="item in coinsAll" :key="item.volume">
                 <div slot="icon" class="j-cell-icon">
-                  <img
-                    class="coin-icon"
-                    :src="item.image ? $imgApi + item.image : require('../../assets/icons/svg/default.svg')"
-                  >
+                  <img class="coin-icon" src="../../assets/images/default.png">
                 </div>
                 <div slot="title" class="j-cell-title">
-                  <text>发:</text>
+                  <div class="j-cell-title1">测试标题1</div>
+                  <div class="j-cell-title2">{{item.volume | filterMoney}}</div>
                 </div>
                 <div class="j-cell-value">
-                  <div class="j-cell-value1">测试文字1测试文字1测试文字1测试文字1测试文字1测试文字1</div>
-                  <div class="j-cell-value2">测试文字2</div>
+                  <div class="j-cell-value1">{{item.lastprice}}</div>
+                  <div class="j-cell-value2">{{item.lastprice}}</div>
                 </div>
                 <div slot="right-icon" class="j-cell-right-icon">
-                  <van-tag type="success">标签 danger</van-tag>
+                  <van-tag type="success" :class="{'danger': item.change <= 0}" class="j-tag">{{item.change}}%</van-tag>
                 </div>
               </van-cell>
             </van-cell-group>
@@ -84,199 +82,199 @@ export default {
       swipeDirection: '',
       coinsAll: [
         {
-          volume: 56696183.06,
+          volume: 41697395.69,
           market: 'mbaex',
           image: 'BTT.jpg',
-          high: 0.000816,
+          high: 0.000798,
           amount: 124035.39759138,
-          low: 0.000789,
+          low: 0.000769,
           curreny: 'USDT',
-          change: '1.77',
+          change: '-0.38',
           coinname: 'BTT',
-          lastprice: 0.000803,
-          updatetime: '2019-03-21 15:26:01'
+          lastprice: 0.00078,
+          updatetime: '2019-03-22 15:40:12'
         },
         {
-          volume: 327026.2406,
+          volume: 430472.6759,
           market: 'mbaex',
           image: 'FDG.jpg',
-          high: 1.75,
+          high: 1.64,
           amount: 649075.67056321,
-          low: 1.56,
+          low: 1.53,
           curreny: 'USDT',
-          change: '1.51',
+          change: '-3.05',
           coinname: 'FDG',
-          lastprice: 1.67,
-          updatetime: '2019-03-21 15:26:01'
+          lastprice: 1.59,
+          updatetime: '2019-03-22 15:40:12'
         },
         {
-          volume: 25846626.943,
+          volume: 28995850.6598,
           market: 'mbaex',
           image: 'GUBI.jpg',
-          high: 0.0522,
+          high: 0.0587,
           amount: 8806528.54599948,
-          low: 0.048,
+          low: 0.0507,
           curreny: 'USDT',
-          change: '1.00',
+          change: '11.26',
           coinname: 'GUBI',
-          lastprice: 0.0504,
-          updatetime: '2019-03-21 15:26:01'
+          lastprice: 0.0573,
+          updatetime: '2019-03-22 15:40:12'
         },
         {
-          volume: 5344.8791,
+          volume: 6752.2662,
           market: 'mbaex',
           image: 'QTUM.jpg',
-          high: 2.585,
+          high: 2.5,
           amount: 267429.48661083,
-          low: 2.412,
+          low: 2.32,
           curreny: 'USDT',
-          change: '2.36',
+          change: '-0.18',
           coinname: 'QTUM',
-          lastprice: 2.5488,
-          updatetime: '2019-03-21 15:26:01'
+          lastprice: 2.4116,
+          updatetime: '2019-03-22 15:40:12'
         },
         {
-          volume: 308060.4979,
+          volume: 599520.3138,
           market: 'mbaex',
           image: 'RST.jpg',
-          high: 1.14,
+          high: 1.05,
           amount: 2285867.253118,
-          low: 1.04,
+          low: 0.91,
           curreny: 'USDT',
-          change: '-3.64',
+          change: '-10.78',
           coinname: 'RST',
-          lastprice: 1.06,
-          updatetime: '2019-03-21 15:26:01'
+          lastprice: 0.91,
+          updatetime: '2019-03-22 15:40:12'
         },
         {
-          volume: 5443977.3815,
+          volume: 6354085.7732,
           market: 'mbaex',
           image: 'MDP.jpg',
-          high: 0.1899,
+          high: 0.184,
           amount: 2727629.99043908,
-          low: 0.1835,
+          low: 0.1781,
           curreny: 'USDT',
-          change: '0.05',
+          change: '-1.49',
           coinname: 'MDP',
-          lastprice: 0.1851,
-          updatetime: '2019-03-21 15:26:01'
+          lastprice: 0.1785,
+          updatetime: '2019-03-22 15:40:12'
         },
         {
-          volume: 306759.5182,
+          volume: 226011.1189,
           market: 'mbaex',
           image: 'ALLN.jpg',
-          high: 1.01,
+          high: 0.95,
           amount: 2412891.409153,
-          low: 0.92,
+          low: 0.89,
           curreny: 'USDT',
-          change: '8.70',
+          change: '-4.30',
           coinname: 'ALLN',
-          lastprice: 1.0,
-          updatetime: '2019-03-21 15:26:01'
+          lastprice: 0.89,
+          updatetime: '2019-03-22 15:40:12'
         },
         {
-          volume: 167.861,
+          volume: 299.1621,
           market: 'mbaex',
           image: 'BTC.jpg',
-          high: 4005.0,
+          high: 4015.0,
           amount: 725006.486782,
-          low: 3960.94,
+          low: 3972.14,
           curreny: 'USDT',
-          change: '0.89',
+          change: '0.49',
           coinname: 'BTC',
-          lastprice: 3996.71,
-          updatetime: '2019-03-21 15:26:01'
+          lastprice: 4000.16,
+          updatetime: '2019-03-22 15:40:12'
         },
         {
-          volume: 1189068.4759,
+          volume: 776485.2173,
           market: 'mbaex',
           image: 'XRP.jpg',
-          high: 0.3155,
+          high: 0.3115,
           amount: 576574.82555235,
-          low: 0.3125,
+          low: 0.3072,
           curreny: 'USDT',
-          change: '0.16',
+          change: '-0.55',
           coinname: 'XRP',
-          lastprice: 0.313,
-          updatetime: '2019-03-21 15:26:01'
+          lastprice: 0.3083,
+          updatetime: '2019-03-22 15:40:12'
         },
         {
-          volume: 10167.0229,
+          volume: 8580.2244,
           market: 'mbaex',
           image: 'ETH.jpg',
-          high: 137.74,
+          high: 135.99,
           amount: 698744.686824,
-          low: 136.0,
+          low: 134.5,
           curreny: 'USDT',
-          change: '1.23',
+          change: '0.19',
           coinname: 'ETH',
-          lastprice: 137.69,
-          updatetime: '2019-03-21 15:26:01'
+          lastprice: 135.25,
+          updatetime: '2019-03-22 15:40:12'
         },
         {
-          volume: 4368621.2193,
+          volume: 4716367.6113,
           market: 'mbaex',
           image: 'TRX.jpg',
-          high: 0.0225,
+          high: 0.0224,
           amount: 329083.1808239,
-          low: 0.0223,
+          low: 0.0221,
           curreny: 'USDT',
-          change: '-0.44',
+          change: '0.00',
           coinname: 'TRX',
-          lastprice: 0.0224,
-          updatetime: '2019-03-21 15:26:01'
+          lastprice: 0.0223,
+          updatetime: '2019-03-22 15:40:12'
         },
         {
-          volume: 3554.8699,
+          volume: 6620.3025,
           market: 'mbaex',
           image: 'LTC.jpg',
-          high: 59.83,
+          high: 59.3,
           amount: 206974.976735,
-          low: 58.74,
+          low: 58.11,
           curreny: 'USDT',
-          change: '-0.47',
+          change: '-0.03',
           coinname: 'LTC',
-          lastprice: 59.09,
-          updatetime: '2019-03-21 15:26:01'
+          lastprice: 58.29,
+          updatetime: '2019-03-22 15:40:12'
         },
         {
-          volume: 4586.6853,
+          volume: 6547.5065,
           market: 'mbaex',
           image: 'BCHSV.jpg',
-          high: 67.35,
+          high: 66.69,
           amount: 181660.965782,
-          low: 65.09,
+          low: 64.32,
           curreny: 'USDT',
-          change: '0.32',
+          change: '1.05',
           coinname: 'BCHSV',
-          lastprice: 65.41,
-          updatetime: '2019-03-21 15:26:01'
+          lastprice: 65.22,
+          updatetime: '2019-03-22 15:40:12'
         },
         {
-          volume: 46.2856,
+          volume: 3589.3337,
           market: 'mbaex',
           image: 'BCHABC.jpg',
-          high: 157.92,
+          high: 159.5,
           amount: 180550.520544,
-          low: 154.5,
+          low: 152.14,
           curreny: 'USDT',
-          change: '0.36',
+          change: '-1.62',
           coinname: 'BCHABC',
-          lastprice: 157.0,
-          updatetime: '2019-03-21 15:26:01'
+          lastprice: 152.82,
+          updatetime: '2019-03-22 15:40:12'
         },
         {
-          volume: 72.3787,
+          volume: 183.2361,
           market: 'mbaex',
           image: 'DASH.jpg',
-          high: 91.6,
+          high: 90.95,
           amount: 332370.637507,
-          low: 88.15,
+          low: 88.45,
           curreny: 'USDT',
-          change: '-0.08',
+          change: '0.19',
           coinname: 'DASH',
-          lastprice: 89.18,
-          updatetime: '2019-03-21 15:26:01'
+          lastprice: 90.11,
+          updatetime: '2019-03-22 15:40:12'
         }
       ]
     }
@@ -300,7 +298,8 @@ export default {
     }
   },
   created() {
-    if (this.isWeixin()) {
+    console.log('isWeixin', this.isWeixin)
+    if (this.isWeixin) {
       wx.miniProgram.getEnv(res => {
         if (res.miniprogram) {
           this.isProMini = true
@@ -356,6 +355,10 @@ export default {
   .coins {
     width: 100%;
     min-height: 500px;
+    .j-tag{
+        min-width: 70px;
+        text-align: center;
+    }
   }
 }
 </style>

@@ -31,6 +31,17 @@ import 'amfe-flexible'
 // icon
 import './assets/icons'
 
+const components = [
+  Cell,
+  CellGroup,
+  Button,
+  Icon,
+  Dialog,
+  Toast,
+  NavBar,
+  Tag
+]
+
 /**
  * @description 生产环境关掉提示
  */
@@ -39,7 +50,11 @@ Vue.config.productionTip = false
 /**
  * 安装插件
  */
-Vue.use(Cell).use(CellGroup).use(Button).use(Icon).use(Dialog).use(Toast).use(NavBar).use(Tag)
+
+components.forEach(Component => {
+  Vue.use(Component)
+})
+
 Vue.use(validator)
 Vue.use(VueRx)
 Vue.use(myPlugin)

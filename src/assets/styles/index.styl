@@ -1,6 +1,8 @@
+@import './mixins.styl';
+@import './variables.styl';
+
 @import './common.styl';
 @import './vant-ui.styl';
-
 
 html {
     -webkit-box-sizing: border-box;
@@ -8,8 +10,7 @@ html {
     box-sizing: border-box;
 }
 
-html,
-body {
+html, body {
     height: 100%;
     font-size: 14px;
     color: #666;
@@ -22,18 +23,19 @@ body {
 }
 
 img {
-  width: auto;
-  height: auto;
-  max-width: 100% !important;
-  max-height: 100% !important;
-  vertical-align: middle;
+    width: auto;
+    height: auto;
+    max-width: 100% !important;
+    max-height: 100% !important;
+    vertical-align: middle;
 }
 
 .container {
-  padding-top: 46Px; // ignored
-  width: 100%;
-  .wrapper {
+    padding-top: 46Px; // ignored
     width: 100%;
-    padding: 10px;
-  }
+
+    .wrapper {
+        width: 100%;
+        padding: 10px;
+    }
 }

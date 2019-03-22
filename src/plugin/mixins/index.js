@@ -3,7 +3,7 @@ import {
 } from '@/common/utils'
 
 const mixinDevice = {
-  methods: {
+  computed: {
     isWeixin
   }
 }
