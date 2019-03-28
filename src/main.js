@@ -61,7 +61,7 @@ Vue.use(validator)
 Vue.use(VueRx)
 Vue.use(myPlugin)
 
-new Vue({
+export const vueInstance = new Vue({
   router,
   store,
   render: h => h(App)

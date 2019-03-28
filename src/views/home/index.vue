@@ -308,7 +308,6 @@ export default {
     }
   },
   created() {
-    console.log('isWeixin', this.isWeixin)
     if (this.isWeixin) {
       wx.miniProgram.getEnv(res => {
         if (res.miniprogram) {
@@ -325,8 +324,7 @@ export default {
     }
   },
   mounted() {
-    console.log('IMGURL', this)
-
+    // console.log('IMGURL', this)
     const mybody = document.getElementsByTagName('body')[0]
     const self = this
     let startX, startY, moveEndX, moveEndY, X, Y

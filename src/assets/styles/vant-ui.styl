@@ -1,7 +1,7 @@
 
 .j-nav-bar {
     &.van-nav-bar {
-        background: #1989fa;
+        background: $primary-color;
         color: #fff;
 
         .van-nav-bar__left {
@@ -35,6 +35,15 @@
             flex-direction: column;
             text-align: justify;
             ell2();
+        }
+    }
+}
+
+// 修复van输入框移出时高度不对齐
+.van-cell{
+    .van-cell__value{
+        .van-field__body{
+            height: 100%;    
         }
     }
 }

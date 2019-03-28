@@ -6,11 +6,12 @@ import config from '../config'
 class Ajax {
   constructor(options) {
     this.axios = axios.create({
-      baseURL: config.baseUrl
+      baseURL: options.baseUrl || '',
+      timeout: 60000
     })
     this.commonPath = (options || {}).commonPath
       ? options.commonPath
-      : '/api/v1'
+      : ''
     this.isLogin = false
     // 通用拦截器（全局的成功后的回调函数，用作去掉 loading 等操作）
     if (options && typeof options.success === 'function') {
@@ -24,6 +25,7 @@ class Ajax {
     // 给POST请求头加上x-crsf-token
     this.axios.interceptors.request.use(
       config => {
+        // debugger
         if (
           !/^(GET|HEAD|OPTIONS|TRACE)$/i.test(config.method) &&
           !this.axios.credentials &&
@@ -32,6 +34,7 @@ class Ajax {
           const csrftoken = getCookie('csrf-token')
           config.headers.common['X-CSRF-Token'] = csrftoken
         }
+        config.headers['Authorization'] = localStorage.getItem('token') || ''
         return config
       },
       err => {
@@ -147,11 +150,11 @@ class Ajax {
     if (!cacheFun) {
       cacheFun = (params, lastConfig) => {
         const config = { ...prevConfig, ...lastConfig }
-        if (!config.cache) {
-          const headers = (config.headers = config.headers || {})
-          headers['Cache-Control'] = 'no-cahce'
-          headers['If-Modified-Since'] = '0'
-        }
+        // if (!config.cache) {
+        //   const headers = (config.headers = config.headers || {})
+        //   headers['Cache-Control'] = 'no-cahce'
+        //   headers['If-Modified-Since'] = '0'
+        // }
         // get 请求下将参数直接拼接到path中
         if (method === 'get') {
           path = this.parse(path, params)
@@ -162,7 +165,7 @@ class Ajax {
           config.data = params
         }
         const commonPath = config.commonPath || this.commonPath
-        console.log('commonPath + path', commonPath + path)
+        // console.log('commonPath + path', commonPath + path)
         return this.axios({
           method,
           url: commonPath + path,
@@ -202,4 +205,7 @@ class Ajax {
   }
 }
 
-export default new Ajax()
+export default new Ajax({
+  baseUrl: config.baseUrl,
+  commonPath: ''
+})

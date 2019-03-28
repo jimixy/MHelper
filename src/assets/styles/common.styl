@@ -47,6 +47,10 @@ for $i in (1 .. 20) {
     .pb{$i} {
         padding-bottom: ($i * 1px);
     }
+
+    .p{$i} {
+        padding: ($i * 1px);
+    }
 }
 
 // 行内元素水平居中
@@ -65,6 +69,14 @@ for $i in (1 .. 20) {
 // 行内块元素
 .inline {
     display: inline-block;
+}
+
+.w100 {
+    width: 100%!important;
+}
+
+.over-hidden {
+    overflow hidden
 }
 
 // 超出显示省略号

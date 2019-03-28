@@ -106,5 +106,15 @@ module.exports = {
     host: '127.0.0.1',
     port: 8083,
     publicPath
+    // proxy: {
+    //   '/api': {
+    //     target: 'https://api.mhelper.co',
+    //     changeOrigin: true,
+    //     ws: true,
+    //     pathRewrite: {
+    //       '^/api': ''
+    //     }
+    //   }
+    // }
   }
 }
