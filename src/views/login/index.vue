@@ -56,9 +56,6 @@ export default {
     }
   },
   methods: {
-    switchRoute(name, query) {
-      this.$router.push({ name, query })
-    },
     login() {
       if (!this.member.loginaccount) {
         this.$toast('请输入手机号')
@@ -78,9 +75,6 @@ export default {
           })
         }
       })
-    },
-    back() {
-      this.$router.go(-1)
     }
   }
 }

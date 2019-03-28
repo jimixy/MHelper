@@ -123,9 +123,6 @@ export default {
         }, 1000)
       }
     },
-    switchRoute(name, query) {
-      this.$router.push({ name, query })
-    },
     register() {
       if (!this.member.cellPhone) {
         this.$toast('请输入手机号')
@@ -158,9 +155,6 @@ export default {
           })
         }
       })
-    },
-    back() {
-      this.$router.go(-1)
     }
   }
 }

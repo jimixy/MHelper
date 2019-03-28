@@ -5,6 +5,17 @@ import {
 const mixinDevice = {
   computed: {
     isWeixin
+  },
+  methods: {
+    back() {
+      this.$router.go(-1)
+    },
+    switchRoute(name, query) {
+      this.$router.push({
+        name,
+        query
+      })
+    }
   }
 }
 

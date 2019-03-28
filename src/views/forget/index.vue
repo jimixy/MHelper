@@ -106,9 +106,6 @@ export default {
         }, 1000)
       }
     },
-    switchRoute(name, query) {
-      this.$router.push({ name, query })
-    },
     forget() {
       if (!this.member.cellphone) {
         this.$toast('请输入手机号')
@@ -123,9 +120,6 @@ export default {
         this.$toast('修改密码成功')
         this.switchRoute('home')
       })
-    },
-    back() {
-      this.$router.go(-1)
     }
   }
 }
