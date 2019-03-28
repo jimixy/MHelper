@@ -26,7 +26,7 @@
       </van-cell-group>
     </form>
 
-    <div class="btns p10 f14 over-hidden">
+    <div class="p10 f14 over-hidden">
       <span
         class="fl danger-color"
         @click="switchRoute('register', {cellphone: member.loginaccount})"
@@ -37,7 +37,7 @@
       >忘记密码</span>
     </div>
 
-    <div class="login p10">
+    <div class="p10">
       <van-button type="info" class="w100" @click="login">登录</van-button>
     </div>
   </div>
@@ -70,11 +70,13 @@ export default {
       }
       this.$rest.logReg.login(this.member).then(res => {
         this.$toast(res.data.msg)
-        localStorage.setItem('token', res.headers['authorization'])
-        this.$store.dispatch('getUserInfo').then((res) => {
-          if (!res) return
-          this.$router.push({ name: 'home' })
-        })
+        if (res.data.code === 200) {
+          localStorage.setItem('token', res.headers['authorization'])
+          this.$store.dispatch('getUserInfo').then((res) => {
+            if (!res) return
+            this.switchRoute('home')
+          })
+        }
       })
     },
     back() {

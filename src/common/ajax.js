@@ -25,7 +25,6 @@ class Ajax {
     // 给POST请求头加上x-crsf-token
     this.axios.interceptors.request.use(
       config => {
-        // debugger
         if (
           !/^(GET|HEAD|OPTIONS|TRACE)$/i.test(config.method) &&
           !this.axios.credentials &&
@@ -59,20 +58,6 @@ class Ajax {
             case 504:
               console.log('请求超时')
               break
-            // case 400: // 用户没有csrf-token
-            // case 401: // 用户没有登录态
-            //   if (!this.isLogin && process.client) {
-            //     // 只使第一次401的hash
-            //     this.isLogin = true
-            //     if (window.location.pathname || window.location.hash) {
-            //       this.next = encodeURIComponent(
-            //         window.location.pathname + window.location.hash
-            //       )
-            //     }
-            //     const redirect = '/login?next=' + this.next
-            //     window.location.href = location.origin + redirect
-            //   }
-            //   break
             default:
               console.log('error:' + err.response.status)
               break
@@ -80,6 +65,8 @@ class Ajax {
           const res = this.normalizeRes(err.response)
           return Promise.reject(res.data || res) // 返回接口返回的错误信息
         }
+        console.log('errMsg:', err)
+        return Promise.reject(err)
       }
     )
   }
@@ -150,11 +137,11 @@ class Ajax {
     if (!cacheFun) {
       cacheFun = (params, lastConfig) => {
         const config = { ...prevConfig, ...lastConfig }
-        // if (!config.cache) {
-        //   const headers = (config.headers = config.headers || {})
-        //   headers['Cache-Control'] = 'no-cahce'
-        //   headers['If-Modified-Since'] = '0'
-        // }
+        if (config.cache === false) {
+          const headers = (config.headers = config.headers || {})
+          headers['Cache-Control'] = 'no-cahce'
+          headers['If-Modified-Since'] = '0'
+        }
         // get 请求下将参数直接拼接到path中
         if (method === 'get') {
           path = this.parse(path, params)
@@ -165,7 +152,6 @@ class Ajax {
           config.data = params
         }
         const commonPath = config.commonPath || this.commonPath
-        // console.log('commonPath + path', commonPath + path)
         return this.axios({
           method,
           url: commonPath + path,
@@ -174,15 +160,7 @@ class Ajax {
           .then(
             res => {
               return config.returnRes ? res : res.data
-            },
-            res => {
-              return res
-            }
-          )
-          .catch(err => {
-            return err.toString()
-            // throw new Error(JSON.stringify(err))
-          })
+            })
       }
     }
     return cacheFun

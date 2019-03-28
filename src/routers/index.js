@@ -54,10 +54,25 @@ const router = new Router({
 })
 
 router.beforeEach((to, from, next) => {
-  if (to.name === 'login') {
-    next()
+  if (to.query.recommender) {
+    localStorage.setItem('recommender', to.query.recommender)
+  }
+  if (localStorage.getItem('token') && localStorage.getItem('token') !== 'undefined') {
+    if (to.path === '/login' || to.path === '/register' || to.path === '/forget') {
+      next({
+        path: '/'
+      })
+    } else {
+      next()
+    }
   } else {
-    next()
+    /* has no token */
+    if (to.path === '/login' || to.path === '/register' || to.path === '/forget') {
+      next()
+    } else {
+      next()
+      // next('/login')
+    }
   }
 })
 
