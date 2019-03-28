@@ -37,11 +37,6 @@ export default {
     getChange(val) {
     //   console.log('val', val)
     }
-  },
-  mounted() {
-    // 测试 API 的调用
-    // console.log('router', this.$route)
-    // this.$rest.hehe.test({ name: 'tomy' })
   }
 }
 </script>
