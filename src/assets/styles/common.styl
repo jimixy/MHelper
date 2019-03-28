@@ -54,7 +54,7 @@ for $i in (1 .. 20) {
 }
 
 // 行内元素水平居中
-.text-c {
+.center {
     text-align: center;
 }
 
@@ -69,6 +69,10 @@ for $i in (1 .. 20) {
 // 行内块元素
 .inline {
     display: inline-block;
+}
+
+.fixed{
+    position: fixed!important;
 }
 
 .w100 {
@@ -92,7 +96,7 @@ for $i in (1 .. 20) {
     background-color: $error-color !important;
 }
 
-.t-danger {
+.c-danger {
     color: $error-color !important;
 }
 
@@ -100,6 +104,10 @@ for $i in (1 .. 20) {
     background-color: $success-color !important;
 }
 
-.t-success {
+.c-success {
     color: $success-color !important;
+}
+
+.min70 {
+    min-width: 70px;    
 }

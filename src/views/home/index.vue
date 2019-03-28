@@ -13,11 +13,17 @@
     </van-nav-bar>
 
     <div class="contain">
-      <van-tabs v-model="market" animated @change="changeMarket">
+      <van-tabs class="tabs1 fixed w100" v-model="market" animated @change="changeMarket">
         <van-tab v-for="item in markets" :key="item" :title="item"></van-tab>
       </van-tabs>
 
-      <van-tabs v-model="currency" :swipeable="childSwipe" animated @change="changeCurrency">
+      <van-tabs
+        class="tabs2 w100"
+        v-model="currency"
+        :swipeable="childSwipe"
+        animated
+        @change="changeCurrency"
+      >
         <van-tab v-for="item in currencys" :key="item" :title="item">
           <div class="coins">
             <van-cell-group class="j-cell-group">
@@ -29,14 +35,14 @@
                   <div class="j-cell-title1">测试标题1</div>
                   <div class="j-cell-title2">量 {{item.volume | filterMoney}}</div>
                 </div>
-                <div class="j-cell-value j-span" :class="[item.change>0?'t-success': 't-danger']">
+                <div class="j-cell-value j-span" :class="[item.change>0?'c-success': 'c-danger']">
                   <div class="j-cell-value1">{{item.lastprice}}</div>
                   <div class="j-cell-value2">{{item.lastprice}}</div>
                 </div>
                 <div slot="right-icon" class="j-cell-right-icon">
                   <van-tag
                     :class="[item.change>0?'b-success': 'b-danger']"
-                    class="j-tag"
+                    class="j-tag min70 center"
                   >{{item.change}}%</van-tag>
                 </div>
               </van-cell>
@@ -324,7 +330,6 @@ export default {
     }
   },
   mounted() {
-    // console.log('IMGURL', this)
     const mybody = document.getElementsByTagName('body')[0]
     const self = this
     let startX, startY, moveEndX, moveEndY, X, Y
@@ -358,16 +363,5 @@ export default {
 }
 </script>
 
-<style lang="stylus">
-.contain {
-  .coins {
-    width: 100%;
-    min-height: 500px;
-
-    .j-tag {
-      min-width: 70px;
-      text-align: center;
-    }
-  }
-}
+<style lang="stylus" scoped>
 </style>

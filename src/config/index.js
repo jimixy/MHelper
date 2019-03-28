@@ -5,6 +5,6 @@ const config = {
   imgApi: 'http://file.mhelper.co/image/'
 }
 
-config.baseUrl = config.isOnline ? 'http://192.168.1.49:8080' : config.baseUrl
+config.baseUrl = config.isOnline ? 'https://api.mhelper.co' : config.baseUrl
 
 export default config
