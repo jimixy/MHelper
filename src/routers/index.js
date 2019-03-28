@@ -57,7 +57,7 @@ router.beforeEach((to, from, next) => {
   if (to.query.recommender) {
     localStorage.setItem('recommender', to.query.recommender)
   }
-  if (localStorage.getItem('token') && localStorage.getItem('token') !== 'undefined') {
+  if (localStorage.getItem('token') && localStorage.getItem('token') != null) {
     if (to.path === '/login' || to.path === '/register' || to.path === '/forget') {
       next({
         path: '/'
