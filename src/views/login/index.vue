@@ -40,8 +40,6 @@
     <div class="p10">
       <van-button
         type="info"
-        :loading="isLogin"
-        loading-text="登录"
         :disabled="isLogin"
         class="w100"
         @click="login"

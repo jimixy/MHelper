@@ -19,5 +19,6 @@ export default {
     }
     #app {
       wh(100%, 100%);
+      background-color: #f2f2f2;
     }
 </style>

@@ -55,6 +55,27 @@ class Ajax {
       response => {
         this.success(response)
         store.commit('SET_LOGIN', false)
+        // console.log('res', response)
+        if (response.data.code !== 200) {
+          if (response.data.code === 100 || // 用户未登录
+                    response.data.code === 101 || // 用户不存在
+                    response.data.code === 403 || // 拒绝访问
+                    response.data.code === 5101 || // 两次输入密码不相同
+                    response.data.code === 5201 || // Token验证失败, 请求重新登录!
+                    response.data.code === 5202) { // 帐号已在其它地方登录!
+            localStorage.clear()
+            vueInstance.$toast(response.data.msg)
+            window.location.href = '/'
+            return Promise.reject('error')
+          }
+          if (response.data.code === 2001) return response
+          if (response.data.code === 1000) {
+            vueInstance.$toast('帐号已存在')
+            return Promise.reject('error')
+          }
+          vueInstance.$toast(response.data.msg)
+          return Promise.reject('error')
+        }
         return response
       },
       err => {
@@ -176,8 +197,10 @@ class Ajax {
         })
           .then(
             res => {
-              return config.returnRes ? res : res.data
-            })
+              return config.returnRes ? res : res.data.data
+            }).catch(err => {
+            return err.toString()
+          })
       }
     }
     return cacheFun

@@ -59,8 +59,6 @@
     <div class="p10">
       <van-button
         type="info"
-        :loading="isLogin"
-        loading-text="注册"
         :disabled="isLogin"
         class="w100"
         @click="register"

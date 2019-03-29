@@ -12,7 +12,7 @@ const mixinDevice = {
   },
   computed: {
     isWeixin,
-    ...mapGetters(['isLogin'])
+    ...mapGetters(['isLogin', 'userInfo'])
   },
   methods: {
     back() {
