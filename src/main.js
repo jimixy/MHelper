@@ -21,6 +21,8 @@ import './assets/icons'
  * @description 全局组件，不用单独引入
  */
 import {
+  Row,
+  Col,
   Cell,
   CellGroup,
   Button,
@@ -33,6 +35,7 @@ import {
 } from 'vant'
 
 const components = [
+  Row, Col,
   Cell,
   CellGroup,
   Button,
