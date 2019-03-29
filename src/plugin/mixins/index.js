@@ -2,9 +2,17 @@ import {
   isWeixin
 } from '@/common/utils'
 
+import {
+  mapGetters
+} from 'vuex'
+
 const mixinDevice = {
+  data () {
+    return {}
+  },
   computed: {
-    isWeixin
+    isWeixin,
+    ...mapGetters(['isLogin'])
   },
   methods: {
     back() {

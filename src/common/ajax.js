@@ -1,7 +1,13 @@
 import axios from 'axios'
 import qs from 'qs'
+import store from '@/store'
+
 import getCookie from './cookie'
 import config from '../config'
+
+import {
+  vueInstance
+} from '@/main'
 
 class Ajax {
   constructor(options) {
@@ -12,7 +18,8 @@ class Ajax {
     this.commonPath = (options || {}).commonPath
       ? options.commonPath
       : ''
-    this.isLogin = false
+
+    store.commit('SET_LOGIN', false)
     // 通用拦截器（全局的成功后的回调函数，用作去掉 loading 等操作）
     if (options && typeof options.success === 'function') {
       this.success = options.success
@@ -33,6 +40,9 @@ class Ajax {
           const csrftoken = getCookie('csrf-token')
           config.headers.common['X-CSRF-Token'] = csrftoken
         }
+        if (/^(POST)$/i.test(config.method)) {
+          store.commit('SET_LOGIN', true)
+        }
         config.headers['Authorization'] = localStorage.getItem('token') || ''
         return config
       },
@@ -44,6 +54,7 @@ class Ajax {
     this.axios.interceptors.response.use(
       response => {
         this.success(response)
+        store.commit('SET_LOGIN', false)
         return response
       },
       err => {
@@ -65,6 +76,7 @@ class Ajax {
           const res = this.normalizeRes(err.response)
           return Promise.reject(res.data || res) // 返回接口返回的错误信息
         }
+        store.commit('SET_LOGIN', false)
         console.log('errMsg:', err)
         return Promise.reject(err)
       }
@@ -152,6 +164,11 @@ class Ajax {
           config.data = params
         }
         const commonPath = config.commonPath || this.commonPath
+
+        if (method === 'post' && store.getters.isLogin) {
+          vueInstance.$toast('重复提交！')
+          return Promise.reject('重复提交！')
+        }
         return this.axios({
           method,
           url: commonPath + path,

@@ -50,7 +50,14 @@
     </form>
 
     <div class="pt20 p10">
-      <van-button type="info" class="w100" @click="forget">登录</van-button>
+      <van-button
+        type="info"
+        :loading="isLogin"
+        loading-text="确定"
+        :disabled="isLogin"
+        class="w100"
+        @click="forget"
+      >确定</van-button>
     </div>
   </div>
 </template>

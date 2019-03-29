@@ -57,7 +57,14 @@
     </form>
 
     <div class="p10">
-      <van-button type="info" class="w100" @click="register">注册</van-button>
+      <van-button
+        type="info"
+        :loading="isLogin"
+        loading-text="注册"
+        :disabled="isLogin"
+        class="w100"
+        @click="register"
+      >注册</van-button>
     </div>
   </div>
 </template>

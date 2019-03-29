@@ -38,7 +38,14 @@
     </div>
 
     <div class="p10">
-      <van-button type="info" class="w100" @click="login">登录</van-button>
+      <van-button
+        type="info"
+        :loading="isLogin"
+        loading-text="登录"
+        :disabled="isLogin"
+        class="w100"
+        @click="login"
+      >登录</van-button>
     </div>
   </div>
 </template>
@@ -69,7 +76,7 @@ export default {
         this.$toast(res.data.msg)
         if (res.data.code === 200) {
           localStorage.setItem('token', res.headers['authorization'])
-          this.$store.dispatch('getUserInfo').then((res) => {
+          this.$store.dispatch('getUserInfo').then(res => {
             if (!res) return
             this.switchRoute('home')
           })

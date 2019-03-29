@@ -5,12 +5,16 @@ import {
 const user = {
   state: {
     userInfo: localStorage.getItem('userInfo') && localStorage.getItem('userInfo') !== 'undefined'
-      ? JSON.parse(localStorage.getItem('userInfo')) : null
+      ? JSON.parse(localStorage.getItem('userInfo')) : null,
+    isLogin: false
   },
   mutations: {
     SET_USERINFO: (state, userInfo) => {
       state.userInfo = userInfo
       localStorage.setItem('userInfo', JSON.stringify(userInfo))
+    },
+    SET_LOGIN: (state, isLogin) => {
+      state.isLogin = isLogin
     }
   },
   actions: {
