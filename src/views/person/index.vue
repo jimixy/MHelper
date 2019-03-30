@@ -75,25 +75,25 @@
     <div class="scroll">
       <div class="main-part">
         <van-row>
-          <van-col class="main-part-item" span="6">
+          <van-col class="main-part-item" span="6" @click.native="switchRoute('tradGuide')">
             <div class="icon">
               <svg-icon icon-class="zhinan"></svg-icon>
             </div>
             <div class="text">交易指南</div>
           </van-col>
-          <van-col class="main-part-item" span="6">
+          <van-col class="main-part-item" span="6" @click.native="switchRoute('giveReward')">
             <div class="icon">
               <svg-icon icon-class="dashang"></svg-icon>
             </div>
             <div class="text">我要打赏</div>
           </van-col>
-          <van-col class="main-part-item" span="6">
+          <van-col class="main-part-item" span="6" @click.native="switchRoute('myScore')">
             <div class="icon">
               <svg-icon icon-class="icon-test"></svg-icon>
             </div>
             <div class="text">我的业绩</div>
           </van-col>
-          <van-col class="main-part-item" span="6">
+          <van-col class="main-part-item" span="6" @click.native="switchRoute('beHolders')">
             <div class="icon">
               <svg-icon icon-class="gudongxinxi"></svg-icon>
             </div>

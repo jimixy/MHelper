@@ -63,10 +63,7 @@ export default {
   },
   methods: {
     getList() {
-      console.log('news', this.$rest)
-
       this.$rest.news.infoAll().then(res => {
-        console.log('findAll', res)
         this.infoAll = res
       })
     },

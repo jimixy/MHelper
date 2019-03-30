@@ -45,6 +45,39 @@ export default [{
       title: '资讯详情'
     },
     component: () => import('@/views/information/components/infoDetail')
+  },
+  {
+    path: '/tradGuide',
+    name: 'tradGuide',
+    meta: {
+      title: '交易指南'
+    },
+    component: () => import('@/views/tradGuide')
+  },
+  {
+    path: '/giveReward',
+    name: 'giveReward',
+    meta: {
+      title: '我要打赏'
+    },
+    component: () => import('@/views/giveReward')
+  },
+  {
+    path: '/myScore',
+    name: 'myScore',
+    meta: {
+      title: '我的业绩'
+    },
+    component: () => import('@/views/myScore')
+  },
+  {
+    path: '/beHolders',
+    name: 'beHolders',
+    meta: {
+      title: '成为股东'
+    },
+    component: () => import('@/views/beHolders')
   }
+
   ]
 }]
