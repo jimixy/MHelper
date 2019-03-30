@@ -166,10 +166,11 @@ class Ajax {
    */
   request(method, path, prevConfig) {
     !this[`${method}Map`] && (this[`${method}Map`] = {})
-    let cacheFun = this[`${method}Map`][path]
-    if (!cacheFun) {
-      cacheFun = (params, lastConfig) => {
+    const url = path.replace(/\//g, '')
+    if (!this[`${method}Map`][url]) {
+      this[`${method}Map`][url] = (params, lastConfig) => {
         const config = { ...prevConfig, ...lastConfig }
+        let newPath = path // 不修改闭包里面的变量
         if (config.cache === false) {
           const headers = (config.headers = config.headers || {})
           headers['Cache-Control'] = 'no-cahce'
@@ -177,7 +178,7 @@ class Ajax {
         }
         // get 请求下将参数直接拼接到path中
         if (method === 'get') {
-          path = this.parse(path, params)
+          newPath = this.parse(newPath, params)
         }
         // 非 get 请求，配置项中指定用 form 表单的方式提交
         if (method !== 'get') {
@@ -192,7 +193,7 @@ class Ajax {
         }
         return this.axios({
           method,
-          url: commonPath + path,
+          url: commonPath + newPath,
           ...config
         })
           .then(
@@ -203,7 +204,7 @@ class Ajax {
           })
       }
     }
-    return cacheFun
+    return this[`${method}Map`][url]
   }
 
   get() {

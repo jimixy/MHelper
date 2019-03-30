@@ -13,12 +13,12 @@ center($direction = column) {
 }
 
 // 多行超出省略号
-ell2() {
+ell2($clamp = 2) {
     word-break: break-all;
     text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: $clamp;
     overflow: hidden;
 }
 

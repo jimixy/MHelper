@@ -37,7 +37,14 @@ export default [{
       title: '关注小程序'
     },
     component: () => import('@/views/attentionMiniP')
+  },
+  {
+    path: '/infoDetail',
+    name: 'infoDetail',
+    meta: {
+      title: '资讯详情'
+    },
+    component: () => import('@/views/information/components/infoDetail')
   }
-
   ]
 }]
