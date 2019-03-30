@@ -13,12 +13,14 @@
     </van-nav-bar>
 
     <div class="contain">
-      <van-tabs class="tabs1 fixed w100" v-model="market" animated @change="changeMarket">
+      <van-tabs :ellipsis="false" color="#1989fa" class="tabs1 fixed w100" v-model="market" animated @change="changeMarket">
         <van-tab v-for="item in markets" :key="item" :title="item"></van-tab>
       </van-tabs>
 
       <van-tabs
         class="tabs2 w100"
+        color="#1989fa"
+        :ellipsis="false"
         v-model="currency"
         :swipeable="childSwipe"
         animated
@@ -54,13 +56,17 @@
 
     <screen-shots :show="screenShow"></screen-shots>
 
+    <!-- <div class="refresh" @click="refreshCon" v-if="canRefresh">
+        <svg-icon icon-class="refresh"></svg-icon>
+    </div> -->
+
     <!-- 底部上拉菜单 -->
     <van-actionsheet v-model="sheetVisible" cancel-text="取消" :actions="actions" @select="onSelect"/>
   </div>
 </template>
 
 <script>
-import { Actionsheet, Tab, Tabs } from 'vant'
+import { Actionsheet } from 'vant'
 // import QRCode from 'qrcode'
 import screenShots from '@/components/ScreenShots'
 
@@ -68,8 +74,6 @@ export default {
   name: 'home',
   components: {
     [Actionsheet.name]: Actionsheet,
-    [Tab.name]: Tab,
-    [Tabs.name]: Tabs,
     screenShots
   },
   data() {

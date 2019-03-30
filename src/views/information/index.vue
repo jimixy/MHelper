@@ -42,13 +42,11 @@
 </template>
 
 <script>
-import { Search, Tab, Tabs } from 'vant'
+import { Search } from 'vant'
 export default {
   name: 'info',
   components: {
-    [Search.name]: Search,
-    [Tab.name]: Tab,
-    [Tabs.name]: Tabs
+    [Search.name]: Search
   },
   data() {
     return {

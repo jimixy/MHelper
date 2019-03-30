@@ -21,7 +21,7 @@
               class="ml10"
               type="warning"
               size="small"
-              @click="switchRoute('bugCombol')"
+              @click.stop="switchRoute('bugCombol')"
             >购买套餐</van-button>
           </div>
         </div>

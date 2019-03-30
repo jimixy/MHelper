@@ -1,5 +1,7 @@
 import Vue from 'vue'
 
+// 引入样式
+import 'vue-easytable/libs/themes-base/index.css'
 import 'normalize.css/normalize.css'
 import '@/assets/styles/index.styl'
 
@@ -10,6 +12,12 @@ import store from './store'
 import validator from '@ignorance/vue-validator'
 import VueRx from 'vue-rx'
 import myPlugin from './plugin/index'
+
+// 导入 table 和 分页组件
+import {
+  VTable,
+  VPagination
+} from 'vue-easytable'
 
 // rem布局
 import 'amfe-flexible'
@@ -31,11 +39,14 @@ import {
   Dialog,
   Toast,
   NavBar,
-  Tag
+  Tag,
+  Tab,
+  Tabs
 } from 'vant'
 
 const components = [
-  Row, Col,
+  Row,
+  Col,
   Cell,
   CellGroup,
   Button,
@@ -44,7 +55,9 @@ const components = [
   Dialog,
   Toast,
   NavBar,
-  Tag
+  Tag,
+  Tab,
+  Tabs
 ]
 
 /**
@@ -63,6 +76,8 @@ components.forEach(Component => {
 Vue.use(validator)
 Vue.use(VueRx)
 Vue.use(myPlugin)
+Vue.use(VTable)
+Vue.use(VPagination)
 
 export const vueInstance = new Vue({
   router,
