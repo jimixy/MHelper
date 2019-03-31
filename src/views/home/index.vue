@@ -1,7 +1,12 @@
 <template>
   <div class="container">
     <!-- 顶部导航栏 -->
-    <van-nav-bar class="j-nav-bar" fixed :title="$route.meta.title">
+    <van-nav-bar class="j-nav-bar" fixed>
+      <div slot="title" class="btn-wrapper">
+        <span :class="{normal: !ownerCoins}" v-stream:click="onOwner$">自选币种</span>
+        <span :class="{normal: ownerCoins}" v-stream:click="onPlatform$">交易平台</span>
+      </div>
+
       <div slot="left" @click="notice">
         <svg-icon icon-class="notice"></svg-icon>
         <span class="ml5">行情提醒</span>
@@ -13,7 +18,13 @@
     </van-nav-bar>
 
     <div class="contain">
-      <van-tabs :ellipsis="false" color="#1989fa" class="tabs1 fixed w100" v-model="market" animated @change="changeMarket">
+      <van-tabs
+        :ellipsis="false"
+        color="#1989fa"
+        class="tabs1 fixed w100"
+        v-model="market"
+        animated
+        @change="onMarketChange">
         <van-tab v-for="item in markets" :key="item" :title="item"></van-tab>
       </van-tabs>
 
@@ -24,29 +35,13 @@
         v-model="currency"
         :swipeable="childSwipe"
         animated
-        @change="changeCurrency"
+        @change="onCurrencyChange"
       >
         <van-tab v-for="item in currencys" :key="item" :title="item">
           <div class="coins">
             <van-cell-group class="j-cell-group">
               <van-cell class="j-cell" v-for="item in coinsAll" :key="item.volume">
-                <div slot="icon" class="j-cell-icon">
-                  <img class="coin-icon" src="../../assets/images/default.png">
-                </div>
-                <div slot="title" class="j-cell-title">
-                  <div class="j-cell-title1">测试标题1</div>
-                  <div class="j-cell-title2">量 {{item.volume | filterMoney}}</div>
-                </div>
-                <div class="j-cell-value j-span" :class="[item.change>0?'c-success': 'c-danger']">
-                  <div class="j-cell-value1">{{item.lastprice}}</div>
-                  <div class="j-cell-value2">{{item.lastprice}}</div>
-                </div>
-                <div slot="right-icon" class="j-cell-right-icon">
-                  <van-tag
-                    :class="[item.change>0?'b-success': 'b-danger']"
-                    class="j-tag min70 center"
-                  >{{item.change}}%</van-tag>
-                </div>
+                wodetiana
               </van-cell>
             </van-cell-group>
           </div>
@@ -69,6 +64,8 @@
 import { Actionsheet } from 'vant'
 // import QRCode from 'qrcode'
 import screenShots from '@/components/ScreenShots'
+import { merge } from 'rxjs'
+import { mapTo, startWith, tap } from 'rxjs/operators'
 
 export default {
   name: 'home',
@@ -76,8 +73,24 @@ export default {
     [Actionsheet.name]: Actionsheet,
     screenShots
   },
+  domStreams: [ 'onOwner$', 'onPlatform$' ],
+  observableMethods: [ 'onMarketChange', 'onCurrencyChange' ],
+  subscriptions() {
+    return {
+      ownerCoins: merge(
+        this.onOwner$.pipe(mapTo(true)),
+        this.onPlatform$.pipe(mapTo(false))
+      ).pipe(
+        startWith(false)
+      ),
+      listData: this.onMarketChange$.pipe(
+        tap(data => { console.log(data) })
+      )
+    }
+  },
   data() {
     return {
+      ownerCoins: false,
       parentSwipe: false,
       childSwipe: true,
       isProMini: false,
@@ -332,40 +345,31 @@ export default {
         name: '获取小程序'
       })
     }
-  },
-  mounted() {
-    const mybody = document.getElementsByTagName('body')[0]
-    const self = this
-    let startX, startY, moveEndX, moveEndY, X, Y
-    mybody.addEventListener(
-      'touchstart',
-      function(e) {
-        startX = e.touches[0].pageX
-        startY = e.touches[0].pageY
-      },
-      false
-    )
-    mybody.addEventListener('touchmove', function(e) {
-      moveEndX = e.changedTouches[0].pageX
-      moveEndY = e.changedTouches[0].pageY
-      X = moveEndX - startX
-      Y = moveEndY - startY
-      if (Math.abs(X) > Math.abs(Y) && X > 0) {
-        self.swipeDirection = 'right'
-      } else if (Math.abs(X) > Math.abs(Y) && X < 0) {
-        self.swipeDirection = 'left'
-      } else if (Math.abs(Y) > Math.abs(X) && Y > 0) {
-        self.swipeDirection = 'down'
-      } else if (Math.abs(Y) > Math.abs(X) && Y < 0) {
-        self.swipeDirection = 'up'
-      } else {
-        // 没有发生滑动
-        self.swipeDirection = ''
-      }
-    })
   }
 }
 </script>
 
 <style lang="stylus" scoped>
+  .btn-wrapper
+    margin-top 8px
+    display flex
+    justify-content center
+    align-items center
+    font-size 12Px
+
+    span
+      display flex
+      justify-content center
+      align-items center
+      width 30%
+      height 28px
+      background-color #fff
+      color $primary-color
+      border 1Px solid #fff
+      border-radius 2Px
+
+    .normal
+      background-color $primary-color
+      color #fff
+
 </style>
