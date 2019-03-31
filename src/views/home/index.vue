@@ -65,7 +65,7 @@ import { Actionsheet } from 'vant'
 // import QRCode from 'qrcode'
 import screenShots from '@/components/ScreenShots'
 import { merge } from 'rxjs'
-import { mapTo, startWith, tap } from 'rxjs/operators'
+import { mapTo, startWith, tap, withLatestFrom, map } from 'rxjs/operators'
 
 export default {
   name: 'home',
@@ -83,8 +83,17 @@ export default {
       ).pipe(
         startWith(false)
       ),
-      listData: this.onMarketChange$.pipe(
-        tap(data => { console.log(data) })
+      // 一级tab只更新二级tab的数据，最后派发二级tab第一个的点击事件
+      currencyList: this.onMarketChange$.pipe(
+        map(([ index, title ]) => this.currencys),
+        tap(([ index, title ]) => {
+          this.currency = this.currencys[0]
+          this.onCurrencyChange([index, title])
+        })
+      ),
+      // 二级tab更新
+      coins: this.onCurrencyChange$.pipe(
+        map(([ index, title ]) => console.log(index, title))
       )
     }
   },
