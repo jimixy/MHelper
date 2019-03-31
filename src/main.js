@@ -41,7 +41,9 @@ import {
   NavBar,
   Tag,
   Tab,
-  Tabs
+  Tabs,
+  Popup,
+  Picker
 } from 'vant'
 
 const components = [
@@ -57,7 +59,9 @@ const components = [
   NavBar,
   Tag,
   Tab,
-  Tabs
+  Tabs,
+  Popup,
+  Picker
 ]
 
 /**

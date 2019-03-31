@@ -77,6 +77,22 @@ export default [{
       title: '成为股东'
     },
     component: () => import('@/views/beHolders')
+  },
+  {
+    path: '/myPermission',
+    name: 'myPermission',
+    meta: {
+      title: '会员权限'
+    },
+    component: () => import('@/views/myPermission')
+  },
+  {
+    path: '/settlement',
+    name: 'settlement',
+    meta: {
+      title: '结算'
+    },
+    component: () => import('@/views/settlement')
   }
 
   ]

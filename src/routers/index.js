@@ -70,8 +70,8 @@ router.beforeEach((to, from, next) => {
     if (to.path === '/login' || to.path === '/register' || to.path === '/forget') {
       next()
     } else {
-      next()
-      // next('/login')
+      // next()
+      next('/login')
     }
   }
 })

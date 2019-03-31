@@ -61,12 +61,12 @@
           <van-col class="person-account-item" span="8">
             <span class="text">好意见:</span>
             <span class="value">100</span>
-            <span class="primary-color ml5" @click="switchRoute('mineinfo')">结算</span>
+            <span class="primary-color ml5" @click="switchRoute('settlement')">结算</span>
           </van-col>
           <van-col class="person-account-item" span="16">
             <span class="text">待提现金额:</span>
             <span class="value">100</span>
-            <span class="primary-color ml5" @click="switchRoute('mineinfo')">马上提现</span>
+            <span class="primary-color ml5" @click="switchRoute('settlement')">马上提现</span>
           </van-col>
         </van-row>
       </div>
@@ -104,11 +104,11 @@
 
       <div class="other-part">
         <div class="part1">
-          <van-cell title="我的权限" @click.native="hope"></van-cell>
+          <van-cell title="我的权限" @click.native="switchRoute('myPermission')"></van-cell>
           <van-cell title="行情提醒" @click.native="switchRoute('performance')"></van-cell>
           <van-cell title="平台账户管理" @click.native="switchRoute('contribution')"></van-cell>
           <van-cell title="数字币统计" @click.native="hope"></van-cell>
-          <van-cell title="我要结算" @click.native="hope"></van-cell>
+          <van-cell title="我要结算" @click.native="switchRoute('settlement')"></van-cell>
           <van-cell title="运营管理" @click.native="hope"></van-cell>
           <van-cell title="分享好友获现金奖" @click.native="share"></van-cell>
         </div>

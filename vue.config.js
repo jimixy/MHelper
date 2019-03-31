@@ -34,7 +34,7 @@ module.exports = {
           pxtorem({
             rootValue: 37.5,
             propList: ['*', '!font*'],
-            selectorBlackList: ['van-', 'v-table'] // 不转成rem的
+            selectorBlackList: ['van-', 'v-table', 'v-checkbox'] // 不转成rem的
           })
         ]
       }

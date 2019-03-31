@@ -21,11 +21,24 @@
         >
           <van-tab v-for="item in titleAll" :key="item" :title="item">
             <div class="info f14">
+              <div class="screen">
+                删选:
+                <div class="pub_picker">
+                  <pub-picker v-model="curPick1" :options="col1"></pub-picker>
+                </div>
+                <div class="pub_picker">
+                  <pub-picker v-model="curPick2" :options="col2"></pub-picker>
+                </div>
+                <div class="pub_picker">
+                  <pub-picker v-model="curPick3" :options="col3"></pub-picker>
+                </div>
+              </div>
               <v-table
                 :title-rows="titleRows"
                 :columns="columns"
                 :table-data="tableData"
                 is-horizontal-resize
+                @on-custom-comp="customCompFunc"
                 class="w100"
               ></v-table>
             </div>
@@ -37,13 +50,29 @@
 </template>
 
 <script>
+import pubPicker from '@/components/Picker'
+
+import tableEdit from './components/tableEdit'
+
+import Vue from 'vue'
+Vue.component('table-edit', tableEdit)
+
 export default {
   name: 'tradGuide',
+  components: {
+    pubPicker
+  },
   data() {
     return {
+      curPick1: '全部2',
+      col1: ['全部', '买入', '卖出'],
+      curPick2: '平台',
+      col2: ['平台', 'MBAEX', 'EUNEX', 'WCEEX'],
+      curPick3: '数字币',
+      col3: ['数字币', 'WCG', 'NDP', 'DRT'],
+
       titleAll: ['我的委托', '跟进中', '已结束', '综合'],
-      currentInfo: '',
-      multipleSort: false,
+      currentInfo: 0,
       tableData: [
         {
           name: '赵伟',
@@ -122,9 +151,8 @@ export default {
         { field: 'tel', width: 40, columnAlign: 'center', isResize: true },
         { field: 'email', width: 40, columnAlign: 'center', isResize: true },
         { field: 'hobby', width: 40, columnAlign: 'center', isResize: true },
-        { field: 'address', width: 40, columnAlign: 'left', isResize: true }
+        { field: 'address', width: 40, columnAlign: 'center', componentName: 'table-edit', isResize: true }
       ],
-
       titleRows: [
         [
           {
@@ -173,9 +201,37 @@ export default {
       ]
     }
   },
+  watch: {
+    curPick1(newVal, oldVal) {
+      console.log('newVal, oldVal', newVal, oldVal)
+      this.getList()
+    },
+    curPick2(newVal, oldVal) {
+      console.log('newVal, oldVal', newVal, oldVal)
+      this.getList()
+    },
+    curPick3(newVal, oldVal) {
+      console.log('newVal, oldVal', newVal, oldVal)
+      this.getList()
+    }
+  },
+  created() {
+    this.getList()
+  },
   methods: {
+    customCompFunc(params) {
+      console.log(params)
+      this.$dialog.confirm({
+        title: '提示',
+        message: '你真的要撤销委托吗？'
+      }).then(() => {
+      }).catch(() => {
+      })
+    },
+    getList() {},
     changeInfo(index, title) {
-      console.log('changeInfo', index, title)
+      // console.log('changeInfo', index, title)
+      this.getList()
     }
   }
 }
@@ -183,5 +239,15 @@ export default {
 
 <style lang='stylus' scoped>
 .tradGuide {
+  .screen {
+    flex(row);
+    margin: 10Px;
+    height: 30Px;
+    line-height: 30Px;
+
+    .pub_picker {
+      margin-left: 5Px;
+    }
+  }
 }
 </style>
